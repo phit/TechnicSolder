@@ -35,6 +35,7 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-redis": "*",
+        "filament/filament": "^3.3",
         "guzzlehttp/guzzle": "^7.9.3",
         "http-interop/http-factory-guzzle": "^1.2",
         "knplabs/github-api": "^3.16",
@@ -81,7 +82,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

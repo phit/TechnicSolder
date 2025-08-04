@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('client/delete/{client_id}', [ClientController::class, 'getDelete'])->name('client.delete');
     Route::post('client/delete/{client_id}', [ClientController::class, 'postDelete']);
 
-    Route::get('dashboard', [DashboardController::class, 'getIndex'])->name('dashboard');
+    // Route::get('dashboard', [DashboardController::class, 'getIndex'])->name('dashboard');
 
     Route::redirect('key', 'key/list');
     Route::get('key/list', [KeyController::class, 'getList'])->name('key.list');
@@ -74,18 +74,6 @@ Route::middleware('auth')->group(function () {
     Route::get('solder/update', [SolderController::class, 'getUpdate'])->name('solder.update');
     Route::get('solder/update-check', [SolderController::class, 'getUpdateCheck'])->name('solder.updateCheck');
     Route::get('solder/cache-minecraft', [SolderController::class, 'getCacheMinecraft'])->name('solder.cacheMinecraft');
-
-    Route::redirect('user', 'user/list');
-    Route::get('user/list', [UserController::class, 'getList'])->name('user.list');
-    Route::get('user/edit/{user_id}', [UserController::class, 'getEdit'])->name('user.edit');
-    Route::post('user/edit/{user_id}', [UserController::class, 'postEdit']);
-    Route::get('user/create', [UserController::class, 'getCreate'])->name('user.create');
-    Route::post('user/create', [UserController::class, 'postCreate']);
-    Route::get('user/delete/{user_id}', [UserController::class, 'getDelete'])->name('user.delete');
-    Route::post('user/delete/{user_id}', [UserController::class, 'postDelete']);
 });
 
-// Authentication routes
-Route::get('login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('login', [AuthController::class, 'postLogin']);
-Route::get('logout', [AuthController::class, 'doLogout'])->name('logout');
+// Filament handles its own login/logout at /admin/login and /admin/logout by default
