@@ -19,11 +19,11 @@ class RecentModpacks extends BaseWidget
 
         return $recentBuilds->map(function ($build) {
             return Stat::make(
-                $build->modpack->name . ' #' . $build->version,
-                $build->modversions_count . ' mods'
+                $build->modpack->name.' #'.$build->version,
+                $build->modversions_count.' mods'
             )
-            ->description('MC: ' . $build->minecraft . ' | Updated: ' . $build->updated_at->format('Y-m-d'))
-            ->url(url('/modpack/build/' . $build->id));
+                ->description('MC: '.$build->minecraft.' | Updated: '.$build->updated_at->format('Y-m-d'))
+                ->url(url('/modpack/build/'.$build->id));
         })->toArray();
     }
 }

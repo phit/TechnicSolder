@@ -18,11 +18,11 @@ class RecentModVersions extends BaseWidget
 
         return $recentModVersions->map(function ($modversion) {
             return Stat::make(
-                ($modversion->mod->pretty_name ?: $modversion->mod->name) . ' v' . $modversion->version,
-                'By: ' . ($modversion->mod->author ?: 'N/A')
+                ($modversion->mod->pretty_name ?: $modversion->mod->name).' v'.$modversion->version,
+                'By: '.($modversion->mod->author ?: 'N/A')
             )
-            ->description('Created: ' . $modversion->created_at->format('Y-m-d'))
-            ->url(url('/mod/view/' . $modversion->mod->id . '#versions'));
+                ->description('Created: '.$modversion->created_at->format('Y-m-d'))
+                ->url(url('/mod/view/'.$modversion->mod->id.'#versions'));
         })->toArray();
     }
 }

@@ -13,6 +13,7 @@ class Changelog extends Widget
     {
         $rawChangeLog = UpdateUtils::getLatestChangeLog();
         $changelog = array_key_exists('error', $rawChangeLog) ? $rawChangeLog : array_slice($rawChangeLog, 0, 10);
+
         return [
             'changelog' => $changelog,
         ];

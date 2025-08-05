@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KeyController;
 use App\Http\Controllers\ModController;
 use App\Http\Controllers\ModpackController;
 use App\Http\Controllers\SolderController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,13 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::post('client/delete/{client_id}', [ClientController::class, 'postDelete']);
 
     // Route::get('dashboard', [DashboardController::class, 'getIndex'])->name('dashboard');
-
-    Route::redirect('key', 'key/list');
-    Route::get('key/list', [KeyController::class, 'getList'])->name('key.list');
-    Route::get('key/create', [KeyController::class, 'getCreate'])->name('key.create');
-    Route::post('key/create', [KeyController::class, 'postCreate']);
-    Route::get('key/delete/{key_id}', [KeyController::class, 'getDelete'])->name('key.delete');
-    Route::post('key/delete/{key_id}', [KeyController::class, 'postDelete']);
 
     Route::redirect('mod', 'mod/list');
     Route::get('mod/list', [ModController::class, 'getList'])->name('mod.list');
@@ -75,5 +65,3 @@ Route::middleware('auth')->group(function () {
     Route::get('solder/update-check', [SolderController::class, 'getUpdateCheck'])->name('solder.updateCheck');
     Route::get('solder/cache-minecraft', [SolderController::class, 'getCacheMinecraft'])->name('solder.cacheMinecraft');
 });
-
-// Filament handles its own login/logout at /admin/login and /admin/logout by default

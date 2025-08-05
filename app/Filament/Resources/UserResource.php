@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,9 +35,9 @@ class UserResource extends Resource
                             ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('password')
                             ->password()
-                            ->dehydrateStateUsing(fn($state) => Hash::make($state))
-                            ->dehydrated(fn(?string $state): bool => filled($state))
-                            ->required(fn(string $operation): bool => $operation === 'create')
+                            ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                            ->dehydrated(fn (?string $state): bool => filled($state))
+                            ->required(fn (string $operation): bool => $operation === 'create')
                             ->label('Password')
                             ->helperText('If you would like to change this accounts password you may include new passwords below. This is not required to edit an account.'),
                     ])
@@ -153,18 +150,21 @@ class UserResource extends Resource
     public static function canViewAny(): bool
     {
         $user = Auth::user();
+
         return $user && ($user->permission->solder_full || $user->permission->solder_users);
     }
 
     public static function canCreate(): bool
     {
         $user = Auth::user();
+
         return $user && ($user->permission->solder_full || $user->permission->solder_users);
     }
 
     public static function canEdit($record): bool
     {
         $user = Auth::user();
+
         return $user && (
             $user->permission->solder_full ||
             $user->permission->solder_users ||
@@ -184,6 +184,17 @@ class UserResource extends Resource
                 return false;
             }
         }
+
         return $user && ($user->permission->solder_full || $user->permission->solder_users);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['username', 'email'];
+    }
+
+    public static function getGlobalSearchResultTitle(\Illuminate\Database\Eloquent\Model $record): string
+    {
+        return $record->username;
     }
 }
