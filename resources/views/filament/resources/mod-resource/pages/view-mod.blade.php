@@ -31,12 +31,12 @@
                 <table class="table w-full border border-gray-200 dark:border-gray-700 rounded-md overflow-hidden">
                     <thead class="bg-gray-50 dark:bg-gray-800">
                         <tr>
+                            <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700"></th>
                             <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">Version</th>
                             <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">MD5</th>
                             <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">Download URL</th>
                             <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">Filesize</th>
                             <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700">Actions</th>
-                            <th class="px-3 py-2 text-left font-semibold text-gray-700 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700"></th>
                         </tr>
                     </thead>
                     <tbody x-data="{ expanded: {} }">
